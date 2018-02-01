@@ -5,19 +5,20 @@ const path = require('path');
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
-  port: Number(8000 || process.argv[2]),
+  port: Number(process.argv[2] || 9000),
 });
 server.register(Inert, (err) => {
   if (err) throw err;
 });
 server.route({
-  path: '/foo/bar/baz/{file*}',
+  path: '/foo/bar/baz/{path*}',
   method: 'GET',
-  handler: { directory: { path: path.join(__dirname, './public') } },
+  handler: { directory: { path: path.join(__dirname, 'public') } },
 });
-server.start().then(() => {
-  console.log('server started');
-}, () => {
-  process.exit();
+server.start((err) => {
+  if (err) throw err;
+  // console.log('server started');
 });
 module.exports = server;
+
+// console.log(path.join(__dirname, 'public'));
