@@ -3,9 +3,19 @@ const Hapi = require('hapi');
 
 const server = new Hapi.Server();
 server.connection({
-  port: process.argv[2],
+  port: Number(9010 || process.argv[2]),
   host: 'localhost',
 });
-server.start((error) => {
-  if (error) { throw error; }
+server.route({
+  path: '/',
+  method: 'GET',
+  handler: (request, reply) => {
+    reply('done');
+  },
 });
+if (!module.parent) {
+  server.start((error) => {
+    if (error) { throw error; }
+  });
+}
+module.exports = server;
