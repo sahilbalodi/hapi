@@ -21,7 +21,9 @@ server.route({
     },
   },
 });
-server.start((error) => {
-  if (error) { throw error; }
-});
+if (!module.parent) {
+  server.start((error) => {
+    if (error) { throw error; }
+  });
+}
 module.exports = server;
