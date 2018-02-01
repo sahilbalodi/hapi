@@ -30,7 +30,13 @@ describe('test verify', () => {
   test('verify should return null if both arguments are undefined', () => {
     expect(verify()).toBe(null);
   });
-  test('verify should return null if  arguments are not string', () => {
+  test('verify should return null if both arguments are not string', () => {
     expect(verify(1, 2)).toBe(null);
+  });
+  test('verify should return null if both arguments are not string', () => {
+    expect(verify(null, 2)).toBe(null);
+  });
+  test('verify should return true if  arguments are  string', () => {
+    expect(verify('abc', 'def')).toBe(true);
   });
 });

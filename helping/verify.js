@@ -1,8 +1,6 @@
 module.exports = (firstParameter, secondParameter) => {
-  if ((firstParameter === undefined) && (secondParameter === undefined)) {
-    return null;
-  } else if ((typeof (firstParameter) === 'number') || (typeof (secondParameter) === 'number')) {
-    return null;
+  if ((typeof (firstParameter) === 'string') && (typeof (secondParameter) === 'string')) {
+    return true;
   }
-  return true;
+  return null;
 };
