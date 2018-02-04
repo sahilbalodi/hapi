@@ -1,5 +1,5 @@
 const Hapi = require('hapi');
-// const JOI = require('joi');
+const Joi = require('joi');
 
 const server = new Hapi.Server();
 server.connection({
@@ -11,7 +11,21 @@ server.route({
   path: '/login',
   method: 'POST',
   handler: (request, reply) => {
-    reply('login');
+    reply(request.payload.password);
+  },
+  config: {
+    validate: {
+      payload: Joi.object({
+        username: Joi.string(),
+        password: Joi.string().alphanum(),
+        accessToken: Joi.string().alphanum(),
+        birthyear: Joi.number().integer().min(1900).max(2013),
+        email: Joi.string().email(),
+      })
+        .options({ allowUnknown: true })
+        .with('username', 'birthyear')
+        .without('password', 'accessToken'),
+    },
   },
 });
 if (!module.parent) {
