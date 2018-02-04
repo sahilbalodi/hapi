@@ -8,7 +8,7 @@ describe('test for server ', () => {
 
   test('should return hello abc', () => {
     server.inject('/abc', (res) => {
-      expect(res.result).toBe('hello abc');
+      expect(res.result).toBe('Hello abc');
     });
   });
 });

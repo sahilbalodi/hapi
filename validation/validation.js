@@ -4,7 +4,7 @@ const JOI = require('joi');
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
-  port: Number(process.argv[4] || 9120),
+  port: Number(9120 || process.argv[4]),
 });
 
 server.route({
@@ -16,7 +16,7 @@ server.route({
   config: {
     validate: {
       params: {
-        breed: JOI.string().required().max(5).min(0),
+        breed: JOI.string().required().min(0).max(5),
       },
     },
   },

@@ -1,6 +1,5 @@
 const server = require('./view.js');
 const Hapi = require('hapi');
-const fs = require('fs');
 
 describe('test server ', () => {
   test('should return server object', () => {
@@ -9,9 +8,8 @@ describe('test server ', () => {
 });
 describe('test server ', () => {
   test('should should return html', (done) => {
-    const fileContent = fs.readFileSync('/Users/sahilbalodi/Desktop/exercise/views/template/index.html', 'utf-8');
     server.inject('/?name=sahil', (res) => {
-      expect(res.result).toBe(fileContent);
+      expect(res.result).toEqual('<h1>Hello sahil<h1>\n');
       done();
     });
   });

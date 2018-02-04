@@ -6,10 +6,11 @@ describe('test for server', () => {
   test('server should be a server object', () => {
     expect(server).toBeInstanceOf(Hapi.Server);
   });
-  test('should return hello abc', () => {
+  test('should return hello abc', (done) => {
     server.inject('/', (res) => {
-      const fileContent = fs.readFile('/Users/sahilbalodi/Desktop/exercise/handler/index.html');
+      const fileContent = fs.readFileSync('/Users/sahilbalodi/Desktop/exercise/handler/index.html');
       expect(res.result).toBe(fileContent.toString());
+      done();
     });
   });
 });

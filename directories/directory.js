@@ -5,7 +5,7 @@ const path = require('path');
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
-  port: Number(process.argv[2] || 9000),
+  port: Number(process.argv[4] || 9000),
 });
 server.register(Inert, (err) => {
   if (err) throw err;

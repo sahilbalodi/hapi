@@ -11,8 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",
+    "bl": "^1.2.1",
+    "handlebars": "^4.0.11",
     "hapi": "^16.6.2",
-    "jest": "^22.1.4"
+    "inert": "^4.2.1",
+    "jest": "^22.1.4",
+    "joi": "^13.1.1",
+    "rot13-transform": "^1.0.0",
+    "vision": "^4.1.1"
   },
   "devDependencies": {
     "eslint": "^4.16.0",

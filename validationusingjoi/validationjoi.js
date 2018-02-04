@@ -1,18 +1,17 @@
 const Hapi = require('hapi');
-const fs = require('fs');
-const rot13 = require('rot13-transform');
+// const JOI = require('joi');
 
 const server = new Hapi.Server();
 server.connection({
-  port: Number(process.argv[4] || 9010),
   host: 'localhost',
+  port: Number(process.argv[2]) || 8082,
 });
+
 server.route({
-  path: '/',
-  method: 'GET',
+  path: '/login',
+  method: 'POST',
   handler: (request, reply) => {
-    const fileContents = fs.createReadStream('/Users/sahilbalodi/Desktop/exercise/streams/file.txt');
-    reply(null, fileContents.pipe(rot13()));
+    reply('login');
   },
 });
 if (!module.parent) {
